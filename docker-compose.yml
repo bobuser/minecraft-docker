@@ -1,0 +1,32 @@
+version: '3'
+# Other docker-compose examples in /examples
+
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    container_name: mc
+    environment:
+      EULA: "TRUE"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "minecraft"
+      RCON_PORT: 25575
+      MEMORY: "3G"
+      SERVER_NAME: "hotgins"
+      MOTD: "Wer hat's kaputt gemacht? Die Franzosen. (jetzt mit noch mehr Docker)"
+      PVP: "false"
+      SNOOPER_ENABLED: "false"
+      CONSOLE: "true"
+    ports:
+      - "25565:25565"
+    volumes:
+      - "/opt/minecraft:/data"
+    restart: always
+    tty: true
+    stdin_open: true
+#  rcon:
+#    image: itzg/rcon
+#    ports:
+#      - "4326:4326"
+#      - "4327:4327"
+#    volumes:
+#      - "/opt/rcon:/opt/rcon-web-admin/db"
